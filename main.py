@@ -4,6 +4,11 @@ from services import sound
 import RPi.GPIO as GPIO
 import time
 
+##################################
+
+motion.motion_test()
+sound.sound_test()
+
 ################################3
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -23,7 +28,6 @@ GPIO.setup(right_button, GPIO.IN)
 #################################
 StartOn=False           #start lamp on
 StartInputPrev=False    #prev start state
-
 
 
 
