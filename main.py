@@ -29,7 +29,7 @@ GPIO.setup(right_button, GPIO.IN)
 StartOn=False           #start lamp on
 StartInputPrev=False    #prev start state
 
-
+TurnOff=False           #turn off game
 
 ################################
 try:
@@ -40,11 +40,13 @@ try:
                 StartOn=True
                 GPIO.output(start_lamp, StartOn)
 
+                ####그 외 모든 함수
+
             else:                               #else lame goes off
                 StartOn=False
                 GPIO.output(start_lamp, StartOn)#game off
-                time.sleep(1.0)
-                break
+                # break
+
         elif not StartInput and StartInputPrev: #constant state for push button 0.5 sec
             time.sleep(0.5)
         else: pass
@@ -54,4 +56,5 @@ try:
 except KeyboardInterrupt:
     pass
 
-GPIO.cleanup()
+finally:
+    GPIO.cleanup()
