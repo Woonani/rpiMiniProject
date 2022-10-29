@@ -65,7 +65,7 @@ GPIO.setup(led_pin, GPIO.OUT)
 
 buttonInputPrev = False
 ledOn = False
-
+# 파이썬 재밌냐?
 try:
     while True:
         buttonInput = GPIO.input(button_pin)
