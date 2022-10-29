@@ -1,2 +1,2 @@
 def sound_test():
-    print("motion")
+    print("sound")
