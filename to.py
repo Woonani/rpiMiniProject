@@ -52,6 +52,8 @@
 # 
 import RPi.GPIO as GPIO
 
+print("good")
+
 button_pin =27
 led_pin =22
 
