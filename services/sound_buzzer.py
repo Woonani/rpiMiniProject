@@ -35,10 +35,10 @@ def print_wrong(buzzer_pin):     #use as answer sound for temporary
 
     for note in range(0, 5):
         pwm.ChangeFrequency(melody[note])
-        if note==1:
-            time.sleep(0.25)
-        else:
-            time.sleep(0.5)
+        # if note==1:
+        #     time.sleep(0.25)
+        # else:
+        time.sleep(0.5)
 
     pwm.ChangeDutyCycle(0.0)
 
