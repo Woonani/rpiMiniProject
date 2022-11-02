@@ -1,24 +1,11 @@
-import picamera
-import time
 import cv2, dlib, math
-
-#사진 촬영
-camera = picamera.PiCamera()
-
-camera.start_preview()
-
-time.sleep(1)
-camera.resolution = (600, 400)
-camera.capture('/home/camel/Desktop/rpiMiniProject/test.jpg')
-
-camera.stop_preview()
 
 #준비
 predictor = dlib.shape_predictor('/home/camel/Desktop/rpiMiniProject/services/shape_predictor_68_face_landmarks.dat')
 detector = dlib.get_frontal_face_detector()
 
 #얼굴
-img = cv2.imread('/home/camel/Desktop/rpiMiniProject/test.jpg') #이미지 파일 불러오기
+img = cv2.imread('/home/camel/Desktop/rpiMiniProject/image.jpg') #이미지 파일 불러오기
 dets = detector(img, 1)
 
 ## 이제부터 인식된 얼굴 개수만큼 반복하여 얼굴 윤곽을 표시한다.

@@ -1,3 +1,8 @@
+# 패키지 설치
+# pip install dlib opencv-python
+#
+# 학습 모델 다운로드 
+# http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2
 import dlib
 import cv2 as cv
 import numpy as np

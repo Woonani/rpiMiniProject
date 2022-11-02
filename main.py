@@ -1,4 +1,4 @@
-from services import motion
+# from services import motion
 from services import sound
 from services import motion_lamp
 from services import sound_buzzer
