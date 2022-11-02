@@ -15,6 +15,7 @@ import random
 print("server on")
 ################################
 GPIO.setmode(GPIO.BCM)
+GPIO.cleanup()
 GPIO.setwarnings(False)
 
 start_button=4      #game start button
