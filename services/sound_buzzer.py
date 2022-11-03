@@ -32,7 +32,7 @@ def print_wrong(buzzer_pin):     #use as answer sound for temporary
     pwm.start(50.0)
 
     # melody = [523, 523, 440, 349, 294]
-    melody = [440,440, 392, 440, 392, 330, 294, 330, 294]
+    melody = [440, 440, 392, 440, 392, 330, 294, 330, 294]
 
     for note in range(0, 9):
         pwm.ChangeFrequency(melody[note])
