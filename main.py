@@ -15,13 +15,16 @@ import random
 print("server on")
 ################################
 GPIO.setmode(GPIO.BCM)
+
 GPIO.setwarnings(False)
+GPIO.cleanup()
 
 start_button=4      #game start button
 GPIO.setup(start_button, GPIO.IN)
 
 start_lamp=17        #game start lamp
 GPIO.setup(start_lamp, GPIO.OUT)
+
 
 #USER_LEFT
 left_button=21      #left chosen button
@@ -63,6 +66,7 @@ def game_main():        #game-main
     print("GAME START") #game start
     for i in range(0,3):
         print("cham")
+        # GPIO.output(comp_left, true)
         time.sleep(0.5)
 
     computer = ["comp_left", "comp_right"]    #computer chooses answer
