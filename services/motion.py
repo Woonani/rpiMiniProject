@@ -7,7 +7,6 @@ camera = picamera.PiCamera()
 
 camera.start_preview()
 
-time.sleep(1)
 camera.resolution = (600, 400)
 camera.capture('/home/camel/Desktop/rpiMiniProject/test.jpg')
 
