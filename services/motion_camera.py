@@ -4,7 +4,7 @@ import dlib
 
 def determine():
     # set dlib data input&output
-    add=['./data/pic0.jpg', './data/pic1.jpg', './data/pic2.jpg', './data/pic3.jpg']    #save 4 pics
+    add=['data/pic0.jpg', 'data/pic1.jpg', 'data/pic2.jpg', 'data/pic3.jpg']    #save 4 pics
     detector = dlib.get_frontal_face_detector()                                 #dlib trained module
     predictor = dlib.shape_predictor('services/eye_predictor.dat')
     
@@ -56,16 +56,15 @@ def determine():
                 if i>0:         #not point between eyebrows
                     middle_x=middle_x+list_points[i][0]/12
             middle=list_points[0][0]-int(middle_x)
+            # print(middle)
 
             #count number of left&right
-            if middle>6 or middle<-6:
+            if middle>5 or middle<-5:
                 leftright=leftright+1
                 total.append(middle)
-                print(middle)
-
 
             #if counted left&right more then 3times,
-            if leftright>2:
+            if leftright>4:
                 print(total)
 
                 #take last picture as pic1
@@ -96,6 +95,7 @@ def determine():
                 break
 
         #break at esc
+        # cv.imshow('result', img_frame)
         key = cv.waitKey(10)
         if key==27:
             break
