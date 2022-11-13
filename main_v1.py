@@ -1,4 +1,4 @@
-from services import motion
+# from services import motion
 from services import sound
 from services import motion_lamp
 from services import sound_buzzer
@@ -70,8 +70,7 @@ def game_main():        #game-main
     computer_answer=computer[random.randint(0,1)]
    
     while True:
-        # temp=motion_lamp.input_button(left_button, right_button)    #input left or right
-        temp=motion.determine()
+        temp=motion_lamp.input_button(left_button, right_button)    #input left or right
 
         if temp=='user_right' or temp=='user_left':
             print(temp)
@@ -82,12 +81,16 @@ def game_main():        #game-main
             print(computer_answer)
             motion_lamp.input_lamp(computer_answer, comp_left, comp_right)
             
-            if(temp=='user_left' and computer_answer=='comp_left') or (
-                temp=='user_right' and computer_answer=='comp_right'):#output sound answer                                                   
+            if(temp=='user_left' and computer_answer=='comp_left') or (temp=='user_right' and computer_answer=='comp_right'):
+                                                                    #output sound answer
+                print("YOU WON")
+                print("YOU WON")
                 print("YOU WON")
                 sound_buzzer.print_answer(buzzer_pin)
             
             else:                                                   #output sound wrong
+                print("YOU LOST")
+                print("YOU LOST")
                 print("YOU LOST")
                 sound_buzzer.print_wrong(buzzer_pin)
 
