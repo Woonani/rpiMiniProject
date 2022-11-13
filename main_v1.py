@@ -9,7 +9,7 @@ import threading
 import random
 
 ##################################
-
+print("hello world")
 # motion.motion_test()
 # sound.sound_test()
 print("server on")
