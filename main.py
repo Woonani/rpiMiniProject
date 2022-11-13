@@ -70,8 +70,8 @@ def game_main():        #game-main
     computer_answer=computer[random.randint(0,1)]
    
     while True:
-        # temp=motion_lamp.input_button(left_button, right_button)    #input left or right
-        temp=motion.determine()
+        temp=motion_lamp.input_button(left_button, right_button)    #input left or right
+        # temp=motion.determine()
 
         if temp=='user_right' or temp=='user_left':
             print(temp)
