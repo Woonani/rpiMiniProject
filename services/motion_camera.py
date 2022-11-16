@@ -3,8 +3,10 @@ import cv2 as cv
 import dlib
 
 def determine():
+    textPrefix= ' '
+
     # set dlib data input&output
-    add=['data/pic0.jpg', 'data/pic1.jpg', 'data/pic2.jpg', 'data/pic3.jpg']    #save 4 pics
+    add=['./data/pic0.jpg', './data/pic1.jpg', './data/pic2.jpg', './data/pic3.jpg']    #save 4 pics
     detector = dlib.get_frontal_face_detector()                                 #dlib trained module
     predictor = dlib.shape_predictor('services/eye_predictor.dat')
     
@@ -22,8 +24,6 @@ def determine():
     total = []
     leftright=0
     breakpoint=0
-
-    textPrefix='not defined'
 
     print("camera starts")
 
@@ -56,15 +56,17 @@ def determine():
                 if i>0:         #not point between eyebrows
                     middle_x=middle_x+list_points[i][0]/12
             middle=list_points[0][0]-int(middle_x)
-            # print(middle)
+
+            #to see
+            print(middle)
 
             #count number of left&right
-            if middle>5 or middle<-5:
+            if middle>6 or middle<-6:
                 leftright=leftright+1
                 total.append(middle)
 
             #if counted left&right more then 3times,
-            if leftright>4:
+            if leftright>0:
                 print(total)
 
                 #take last picture as pic1
@@ -80,11 +82,10 @@ def determine():
                 #draw square and text, take pic3
                 cv.rectangle(img_frame, (face.left(), face.top()), (face.right(),face.bottom()), (0, 0, 0), 3)
                 if sum(total) < 0:
-                    textPrefix = 'uesr_right'
+                    textPrefix = 'user_right'
                 else:
                     textPrefix = 'user_left'
                 
-                print(textPrefix)
                 cv.putText(img_frame, textPrefix, (face.left(), face.top()), cv.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 0), 2)
                 cv.imwrite(add[3], img_frame)
 
@@ -94,8 +95,10 @@ def determine():
                 cv.destroyAllWindows()
                 break
 
-        #break at esc
+        #to see
         # cv.imshow('result', img_frame)
+
+        #break at esc
         key = cv.waitKey(10)
         if key==27:
             break
@@ -104,4 +107,4 @@ def determine():
     cv.destroyAllWindows()
     return textPrefix
 
-determine()
+# print(determine())
