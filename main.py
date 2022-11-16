@@ -7,6 +7,7 @@ import RPi.GPIO as GPIO
 import time
 import threading
 import random
+from playsound import playsound
 
 ##################################
 
@@ -62,6 +63,7 @@ def game_main():        #game-main
     global main_control
 
     print("GAME START") #game start
+    playsound("gamestart.wav")
     for i in range(0,3):
         print("cham")
         time.sleep(0.5)
