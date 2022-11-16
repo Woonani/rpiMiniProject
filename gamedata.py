@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def game_data(key):
+def game_data(key, winlose):
 
     url = (os.getenv("api"))+"/profile"
     
@@ -16,13 +16,13 @@ def game_data(key):
                 'img1' : ('pic1.jpg', open('data/pic1.jpg', 'rb'), 'text/plain'),
                 'img2' : ('pic1.jpg', open('data/pic1.jpg', 'rb'), 'text/plain'),
                 'img3' : ('pic2.jpg', open('data/pic2.jpg', 'rb'), 'text/plain'),
-                # 'winlose' : winlose
+                'winlose' : winlose
                 }
     )
 
     requests.post(url, data = payload, headers = {'Content-Type': payload.content_type})
     
-    game_data("1234")
+game_data("1234", "0")
 
 
 #     files = [ 
