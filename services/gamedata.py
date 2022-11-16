@@ -4,9 +4,9 @@ import json
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
-
 def game_data(key, winlose):
+
+    load_dotenv()
 
     url = (os.getenv("api"))+"/profile"
     
@@ -22,7 +22,7 @@ def game_data(key, winlose):
 
     requests.post(url, data = payload, headers = {'Content-Type': payload.content_type})
     
-game_data("1234", "0")
+# game_data("1234", "1")
 
 
 #     files = [ 

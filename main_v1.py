@@ -2,13 +2,11 @@ from services import motion
 from services import sound
 from services import motion_lamp
 from services import sound_buzzer
-from playsound import playsound
 
 import RPi.GPIO as GPIO
 import time
 import threading
 import random
-import multiprocessing
 
 ##################################
 
@@ -50,11 +48,6 @@ GPIO.setup(comp_right, GPIO.OUT)
 buzzer_pin=18
 GPIO.setup(buzzer_pin, GPIO.OUT)
 
-gamestart = multiprocessing.Process(target=playsound, args=("gamestart.wav"))
-cham = multiprocessing.Process(target=playsound, args=("cham.wav"))
-gamelose = multiprocessing.Process(target=playsound, args=("gamelose.wav"))
-gamewin = multiprocessing.Process(target=playsound, args=("gamewin.wav"))
-
 #################################
 StartOn=False           #start lamp on
 StartInputPrev=False    #prev start state
@@ -79,14 +72,9 @@ def game_main():        #game-main
 
     while True:
         lamp_cleanup()
-        # gamestart.start()
-        playsound('gamestart.wav')
+
         print("GAME START") #game start
-        # gamestart.terminate()
         for i in range(0,3):
-            # cham.start()
-            playsound('cham.wav')
-            # cham.terminate()
             print("cham")
             time.sleep(0.5)
 
@@ -114,23 +102,17 @@ def game_main():        #game-main
         motion_lamp.input_lamp(computer_answer, comp_left, comp_right)
         
         if(temp=='user_left' and computer_answer=='comp_left') or (
-            temp=='user_right' and computer_answer=='comp_right'):#output sound answer  
-            # gamewin.start()
-            playsound("gamestart.wav")                                                 
+            temp=='user_right' and computer_answer=='comp_right'):#output sound answer                                                   
             print("YOU WON")
-            # gamewin.terminate()
             sound_buzzer.print_answer(buzzer_pin)
         
-        else:           
-            # gamelose.start()
-            playsound("gamelose.wav")                             #output sound wrong
+        else:                                                   #output sound wrong
             print("YOU LOST")
-            # gamelose.terminate()
             sound_buzzer.print_wrong(buzzer_pin)
 
         print("Continue to press LEFT")         #game continue
         print("End to press RIGHT")
-        
+
         while True:
             if force_control:       #force off
                 break
