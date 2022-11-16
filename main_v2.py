@@ -1,5 +1,6 @@
 from services import motion
 from services import motion_lamp
+from services import motion_tensor
 from services import sound_buzzer
 from services import gamedata
 from playsound import playsound
@@ -88,6 +89,7 @@ def game_main():        #game-main
                 break
             temp=motion_lamp.input_button(left_button, right_button)    #input left or right
             # temp=motion.determine()
+            # temp=motion_tensor.determine()
             if temp=='user_right' or temp=='user_left':
                 break
 

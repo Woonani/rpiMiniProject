@@ -1,5 +1,5 @@
-from services import motion
 from services import motion_lamp
+from services import motion_camera
 from services import sound_buzzer
 from services import gamedata
 from playsound import playsound
@@ -11,8 +11,6 @@ import random
 from playsound import playsound
 
 ##################################
-
-# motion.motion_test()
 print("server on")
 ################################
 GPIO.setmode(GPIO.BCM)
@@ -87,8 +85,8 @@ def game_main():        #game-main
         while True:
             if force_control:       #force off
                 break
-            temp=motion_lamp.input_button(left_button, right_button)    #input left or right
-            # temp=motion.determine()
+            # temp=motion_lamp.input_button(left_button, right_button)    #input left or right
+            temp=motion_camera.determine()
             if temp=='user_right' or temp=='user_left':
                 break
 
@@ -101,8 +99,6 @@ def game_main():        #game-main
         time.sleep(1)                                           #output computer answer
         print(computer_answer)
         motion_lamp.input_lamp(computer_answer, comp_left, comp_right)
-        
-
 
         if(temp=='user_left' and computer_answer=='comp_left') or (
             temp=='user_right' and computer_answer=='comp_right'):#output sound answer  
@@ -133,6 +129,7 @@ def game_main():        #game-main
 
 game=threading.Thread(target=game_main)
 #################################
+GPIO.output(start_lamp, False)
 try:                    #start main
     while True:
         StartInput=GPIO.input(start_button)     #start button variable
