@@ -12,17 +12,19 @@ def game_data(key):
     
     payload = MultipartEncoder(
         fields={'key': key,
-                'img' : ('pic0.jpg', open('data/pic0.jpg', 'rb'), 'text/plain'),
-                # 'img' : ('pic1.jpg', open('data/pic1.jpg', 'rb'), 'text/plain'),
-                # 'img' : ('pic1.jpg', open('data/pic1.jpg', 'rb'), 'text/plain'),
-                # 'img' : ('pic2.jpg', open('data/pic2.jpg', 'rb'), 'text/plain'),
-                # 'img' : ('pic3.jpg', open('data/pic3.jpg', 'rb'), 'text/plain'),
+                'img0' : ('pic0.jpg', open('data/pic0.jpg', 'rb'), 'text/plain'),
+                'img1' : ('pic1.jpg', open('data/pic1.jpg', 'rb'), 'text/plain'),
+                'img2' : ('pic1.jpg', open('data/pic1.jpg', 'rb'), 'text/plain'),
+                'img3' : ('pic2.jpg', open('data/pic2.jpg', 'rb'), 'text/plain'),
                 # 'winlose' : winlose
                 }
     )
 
     requests.post(url, data = payload, headers = {'Content-Type': payload.content_type})
     
+    game_data("1234")
+
+
 #     files = [ 
 #         ('img', open('data/pic0.jpg', 'rb')),
 #         ('img', open('data/pic1.jpg', 'rb')),
@@ -49,7 +51,6 @@ def game_data(key):
     # response = requests.post(url, headers= headers, payload=payload)
     # print("response:", response)
 
-game_data("1234")
 
 # URL
 # 127.0.0.1은 localhost로 대체 가능 
