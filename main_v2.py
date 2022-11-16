@@ -8,7 +8,6 @@ import RPi.GPIO as GPIO
 import time
 import threading
 import random
-from playsound import playsound
 
 ##################################
 
