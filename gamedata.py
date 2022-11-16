@@ -1,3 +1,4 @@
+from requests_toolbelt import MultipartEncoder
 import requests
 import json
 import os
@@ -5,28 +6,50 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def game_data(key, photoURL1, photoURL2, photoURL3, photoURL4, winlose):
+def game_data(key):
 
     url = (os.getenv("api"))+"/profile"
     
-    headers = {
-        "Content-Type": "application/json"
-    }
+    payload = MultipartEncoder(
+        fields={'key': key,
+                'img' : ('pic0.jpg', open('data/pic0.jpg', 'rb'), 'text/plain'),
+                # 'img' : ('pic1.jpg', open('data/pic1.jpg', 'rb'), 'text/plain'),
+                # 'img' : ('pic1.jpg', open('data/pic1.jpg', 'rb'), 'text/plain'),
+                # 'img' : ('pic2.jpg', open('data/pic2.jpg', 'rb'), 'text/plain'),
+                # 'img' : ('pic3.jpg', open('data/pic3.jpg', 'rb'), 'text/plain'),
+                # 'winlose' : winlose
+                }
+    )
 
-    temp = {
-        "key" : key,
-        "photoURL1" : photoURL1,
-        "photoURL2" : photoURL2,
-        "photoURL3" : photoURL3,
-        "photoURL4" : photoURL4,
-        "winlose" : winlose,
-    }
-    data = json.dumps(temp)
+    requests.post(url, data = payload, headers = {'Content-Type': payload.content_type})
+    
+#     files = [ 
+#         ('img', open('data/pic0.jpg', 'rb')),
+#         ('img', open('data/pic1.jpg', 'rb')),
+#         # ('img', open('data/pic0.jpg', 'rb')),
+#     ]
 
-    response = requests.post(url, headers=headers, data=data)
-    print("response:", response)
+#     headers = {
+#     'accept': 'application/json',
+#     'Content-Type': 'multipart/form-data',
+# }
 
-game_data("1234", "no-image.jpg", "no-image.jpg", "no-image.jpg", "no-image.jpg", False)
+
+    # requests.post(url, data = files, headers = headers)
+
+    # requests.post(url, files = files)
+
+    # image = MultipartEncoder(fields=files)
+    # headers = {"Content-Type": image.content_type}
+    # res = requests.post(url, headers=headers, data=image)
+    # return res.status_code, res.json()
+    
+
+
+    # response = requests.post(url, headers= headers, payload=payload)
+    # print("response:", response)
+
+game_data("1234")
 
 # URL
 # 127.0.0.1은 localhost로 대체 가능 

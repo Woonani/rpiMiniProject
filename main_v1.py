@@ -112,7 +112,7 @@ def game_main():        #game-main
 
         print("Continue to press LEFT")         #game continue
         print("End to press RIGHT")
-
+        
         while True:
             if force_control:       #force off
                 break
