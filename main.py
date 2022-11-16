@@ -103,12 +103,12 @@ def game_main():        #game-main
             temp=='user_right' and computer_answer=='comp_right'):#output sound answer  
             playsound("sound/wingame.wav")                                                 
             print("YOU WON")
+            gamedata.game_data(keyvalue, "1")                           #send win data
         
         else:           
             playsound("sound/gamelose.wav")                             #output sound wrong
             print("YOU LOST")
-
-        gamedata.game_data(keyvalue, "0")
+            gamedata.game_data(keyvalue, "0")                           #send lose data
 
         print("Continue to press LEFT")         #game continue
         print("End to press RIGHT")
