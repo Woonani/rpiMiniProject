@@ -191,8 +191,6 @@ except KeyboardInterrupt:
 force_control=True              #off game forcely
 game.join()                     #wait til thread ends
 
-
-
 #######################
 #rest lamp and GPIO variable
 
