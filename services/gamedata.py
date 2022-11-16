@@ -14,8 +14,8 @@ def game_data(key, winlose):
         fields={'key': key,
                 'img0' : ('pic0.jpg', open('data/pic0.jpg', 'rb'), 'text/plain'),
                 'img1' : ('pic1.jpg', open('data/pic1.jpg', 'rb'), 'text/plain'),
-                'img2' : ('pic1.jpg', open('data/pic1.jpg', 'rb'), 'text/plain'),
-                'img3' : ('pic2.jpg', open('data/pic2.jpg', 'rb'), 'text/plain'),
+                'img2' : ('pic2.jpg', open('data/pic2.jpg', 'rb'), 'text/plain'),
+                'img3' : ('pic3.jpg', open('data/pic3.jpg', 'rb'), 'text/plain'),
                 'winlose' : winlose
                 }
     )
